@@ -4,7 +4,7 @@
 //   constructor(){
 //     super()
 //     console.log('child constructor');
-    
+
 //   }
 //   render(){
 //     console.log('child render');
@@ -112,31 +112,85 @@
 //lifecycle and flow of class based compoment
 
 
+// import React from "react";
+// class ContactClass extends React.Component {
+
+//     constructor(props){
+//       console.log('child constructor called');
+//         super(props)
+//     }
+
+//     componentDidMount(){
+//     console.log('children  componentDidMount called'); 
+//     //api wale kam
+//   }
+
+//   render() {
+//       console.log(' child render called');
+
+//     return (
+//       <>
+//         <p>this is a class based component</p>
+//         {/* <h1>{this.props.name}</h1> */}
+//       </>
+//     );
+//   }
+// }
+
+// export default ContactClass;
+
+//update state 
+
 import React from "react";
+
 class ContactClass extends React.Component {
+  constructor(props) {
+    super(props);
 
-    constructor(props){
-      console.log('child constructor called');
-        super(props)
-    }
+    console.log("child constructor called");
 
-    componentDidMount(){
-    console.log('children  componentDidMount called'); 
-    //api wale kam
+    this.state = {
+      count: 0,
+    };
   }
 
+  componentDidMount() {
+    console.log("child componentDidMount called");
+  }
+
+  componentDidUpdate() {
+    console.log("child componentDidUpdate called");
+  }
+
+  componentWillUnmount() {
+    
+    console.log("child componentWillUnmount called");
+  }
+
+
   render() {
-      console.log(' child render called');
+    console.log("child render called");
+    const {count} = this.state
 
     return (
       <>
-        <p>this is a class based component</p>
-        {/* <h1>{this.props.name}</h1> */}
+        <p>This is a class based component</p>
+
+        <h1>Count: {count}</h1>
+
+        <button
+          onClick={() => {
+            this.setState({
+              count: count + 1,
+            });
+          }}
+        >
+          Increase
+        </button>
       </>
     );
   }
 }
 
 export default ContactClass;
-
 

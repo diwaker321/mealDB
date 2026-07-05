@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { StrictMode, Suspense , lazy } from 'react'
 import { createRoot } from 'react-dom/client'
 import {createBrowserRouter , RouterProvider } from 'react-router-dom'
 import './index.css'
@@ -6,9 +6,11 @@ import App from './App.jsx'
 import Body from './components/Body.jsx'
 import Categorymeals from './components/Categorymeals.jsx'
 import MealDetail from './components/MealDetail.jsx'
-import Contact from './components/Contact.jsx'
+// import Contact from './components/Contact.jsx'
+import ShimmerUi from './components/ShimmerUi.jsx'
 
 
+const Contact = lazy(()=>import("./components/Contact.jsx"))
 const router = createBrowserRouter([ 
   {
     path:"/",
@@ -28,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/contact",
-        element:<Contact/>
+        element:<Suspense fallback={<ShimmerUi/>}> <Contact/> </Suspense>
       }
     ]
   }

@@ -3,19 +3,24 @@ import Categorycard from "./Categorycard";
 import { Category_API } from "../utils/constant";
 import { Link } from "react-router-dom";
 import ShimmerUi from "./ShimmerUi";
+import useFetch from "../utils/useFetch";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
-  const [category, setCategory] = useState();
-  console.log('category: ', category);
-  const getcategory = async () => {
-    const jsonres = await fetch(Category_API);
-    const data = await jsonres.json();
-    setCategory(data?.categories);
-  };
+  // const [category, setCategory] = useState();
+  // console.log('category: ', category);
+  // const getcategory = async () => {
+  //   const jsonres = await fetch(Category_API);
+  //   const data = await jsonres.json();
+  //   setCategory(data?.categories);
+  // };
 
-  useEffect(() => {
-    getcategory();
-  }, []);
+  // useEffect(() => {
+  //   getcategory();
+  // }, []);
+  const category = useFetch()
+  const status = useOnlineStatus()
+  if(!status) return <h1>opps... May be you are offline. please check your connection</h1>
 
   if(!category) return <ShimmerUi/>
   return (

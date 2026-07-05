@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { mealDetails_API } from "../utils/constant";
 import { useParams } from "react-router-dom";
+import useMealDetails from "../utils/useMealDetails";
 
 const MealDetail = () => {
-  const [meal, setmeal] = useState();
-
+  // const [meal, setmeal] = useState();
   const mealParams = useParams();
-  const getMealDetails = async () => {
-    const res = await fetch(`${mealDetails_API}${mealParams?.mealId}`);
-    const data = await res.json();
-    console.log("data: ", data?.meals[0]);
-    setmeal(data?.meals[0]);
-  };
+  const meal = useMealDetails(mealParams)
 
-  useEffect(() => {
-    getMealDetails();
-  }, []);
+  // const getMealDetails = async () => {
+  //   const res = await fetch(`${mealDetails_API}${mealParams?.mealId}`);
+  //   const data = await res.json();
+  //   console.log("data: ", data?.meals[0]);
+  //   setmeal(data?.meals[0]);
+  // };
+
+  // useEffect(() => {
+  //   getMealDetails();
+  // }, []);
 
   let ingredients = [];
   for (let i = 0; i < 20; i++) {
@@ -26,7 +28,7 @@ const MealDetail = () => {
       ingredients.push({ ingredient, measure });
     }
   }
-  console.log('ingredients: ', ingredients);
+  // console.log('ingredients: ', ingredients);
 
   return (
     <div className="mealDetails p-5">

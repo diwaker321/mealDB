@@ -7,3 +7,8 @@ body
             on click to mealcards -->
                 #mealinfo
 footer
+
+## extra topics
+ ### single page risponsiblity principles
+ ### build custom hooks
+ ### split your code 

@@ -5,6 +5,9 @@ import useMealDetails from "../utils/useMealDetails";
 
 const MealDetail = () => {
   // const [meal, setmeal] = useState();
+  // console.log(meal);
+  
+
   const mealParams = useParams();
   const meal = useMealDetails(mealParams)
 
@@ -24,7 +27,7 @@ const MealDetail = () => {
     let ingredient = meal?.[`strIngredient${i}`];
     let measure = meal?.[`strMeasure${i}`];
     
-    if (ingredient && ingredient.trim() !== "") {
+    if (ingredient?.trim()) {
       ingredients.push({ ingredient, measure });
     }
   }
@@ -77,3 +80,5 @@ const MealDetail = () => {
 };
 
 export default MealDetail;
+
+// https://www.themealdb.com/images/ingredients/${res.ingredient}.png/medium

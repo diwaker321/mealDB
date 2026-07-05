@@ -2,20 +2,6 @@
 // import Functioncontact from './Functioncontact'
 // import ContactClass from './ClassContact'
 
-// const Contact = () => {
-
-//   return (
-//     <div>
-//       <h1 className='text-2xl font-bold text-center'>Lets implement Class based component </h1>
-//       {/* <Functioncontact name={'lastname'}/> */}
-//       <hr />
-//       <ContactClass />
-
-//       {/* <ContactClass username={'diwaker'}/> */}
-//     </div>
-//   )
-// }
-
 // class Contact extends React.Component{
 //   constructor(){
 //     super()
@@ -23,7 +9,7 @@
 //   }
 
 //   componentDidMount(){
-//     console.log('parent  componentDidMount called');
+//     console.log('parent  componentDidMount called'); 
 //     //api wale kam
 //   }
 
@@ -34,33 +20,9 @@
 //       <>
 //       <div>parent contact</div>
 //       <ContactClass/>
+//       {/* <ContactClass/> */}
 //       </>
 //     )
-//   }
-// }
-
-// export default Contact
-
-// import React from "react";
-// class Contact extends React.Component{
-//   constructor(){
-//     super()
-//     console.log('parent constructor ');
-//   }
-
-//   componentDidMount(){
-//     console.log('parent component did mount');
-
-//   }
-//   render(){
-//     console.log('parent render ');
-
-//     return (
-//     <div>
-//       <p>this is Class component</p>
-//       <ContactClass/>
-//     </div>
-//   )
 //   }
 // }
 
@@ -73,11 +35,7 @@ const Contact = () => {
   const emailRef = useRef();
   const phoneRef = useRef();
 
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
+  const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -86,51 +44,42 @@ const Contact = () => {
     const email = emailRef.current.value;
     const phone = phoneRef.current.value;
 
-    const newErrors = {
-      name: "",
-      email: "",
-      phone: "",
-    };
+    const newErrors = {};
 
-    // Name Validation
+    // Name validation
     if (name.trim() === "") {
       newErrors.name = "Name is required";
     }
 
-    // Email Validation
+    // Email validation
     if (!email.includes("@")) {
       newErrors.email = "Please enter a valid email";
     }
 
-    // Phone Validation
+    // Phone validation
     if (phone.length !== 10) {
       newErrors.phone = "Phone number must be 10 digits";
     }
 
+    console.log(newErrors);
     setErrors(newErrors);
+    
 
     // Agar koi error nahi hai
-    if (
-      !newErrors.name &&
-      !newErrors.email &&
-      !newErrors.phone
-    ) {
-      console.log("Form Submitted Successfully");
-
-      console.log({
-        name,
-        email,
-        phone,
-      });
+    if (Object.keys(newErrors).length === 0) {
+      console.log("Form Submitted");
+      console.log({ name, email, phone });
     }
   };
 
   return (
-    <div className="flex justify-center mt-10">
-      <form onSubmit={handleSubmit}>
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-sm border p-5">
+    <div className="flex justify-center p-10">
+      {/* <h1>Contact Section</h1> */}
 
-          <legend className="fieldset-legend text-lg">
+      <form onSubmit={handleSubmit}>
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+
+          <legend className="fieldset-legend text-2xl">
             Contact Form
           </legend>
 
@@ -139,68 +88,47 @@ const Contact = () => {
           <input
             ref={nameRef}
             type="text"
-            className="input w-full"
+            className="input"
             placeholder="Enter your name"
-            onChange={() =>
-              setErrors((prev) => ({
-                ...prev,
-                name: "",
-              }))
-            }
           />
 
           {errors.name && (
-            <p className="text-red-500 text-sm mt-1">
+            <p className="text-red-500 text-sm">
               {errors.name}
             </p>
           )}
 
           {/* Email */}
-          <label className="label mt-2">Email</label>
+          <label className="label">Email</label>
           <input
             ref={emailRef}
             type="email"
-            className="input w-full"
+            className="input"
             placeholder="Enter your email"
-            onChange={() =>
-              setErrors((prev) => ({
-                ...prev,
-                email: "",
-              }))
-            }
           />
 
           {errors.email && (
-            <p className="text-red-500 text-sm mt-1">
+            <p className="text-red-500 text-sm">
               {errors.email}
             </p>
           )}
 
           {/* Phone */}
-          <label className="label mt-2">Phone Number</label>
+          <label className="label">Phone Number</label>
           <input
             ref={phoneRef}
             type="tel"
-            className="input w-full"
+            className="input"
             placeholder="Enter your phone number"
-            onChange={() =>
-              setErrors((prev) => ({
-                ...prev,
-                phone: "",
-              }))
-            }
           />
 
           {errors.phone && (
-            <p className="text-red-500 text-sm mt-1">
+            <p className="text-red-500 text-sm">
               {errors.phone}
             </p>
           )}
 
-          <button
-            type="submit"
-            className="btn btn-primary mt-4"
-          >
+          <button className="btn btn-primary mt-4">
             Submit
           </button>
 

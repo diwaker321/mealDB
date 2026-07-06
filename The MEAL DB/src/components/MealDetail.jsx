@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { mealDetails_API } from "../utils/constant";
 import { useParams } from "react-router-dom";
 import useMealDetails from "../utils/useMealDetails";
 
 const MealDetail = () => {
-  // const [meal, setmeal] = useState();
-  // console.log(meal);
   
 
   const mealParams = useParams();

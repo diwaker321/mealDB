@@ -3,6 +3,7 @@ import { mealDetails_API } from "./constant";
 
 const useMealDetails = (mealParams) => {
   const [meal, setmeal] = useState();
+  
   const getMealDetails = async () => {
       const res = await fetch(`${mealDetails_API}${mealParams?.mealId}`);
       const data = await res.json();

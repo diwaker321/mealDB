@@ -23,9 +23,6 @@ const Rescard = ({ resdata }) => {
       <div className="card-body">
         <h2 className="card-title">
           {strMeal}
-          {/* <div className={`badge ${veg ? "badge-success" : "badge-error"}`}>
-            {veg ? "Veg" : "Non Veg"}
-          </div> */}
         </h2>
 
         <p>
@@ -49,5 +46,17 @@ const Rescard = ({ resdata }) => {
     </div>
   );
 };
+
+export const withNonVegLabel = (Rescard)=>{
+    return (props)=>{
+        return(
+            <div className="relative">
+            <h1 className="absolute z-10 text-white top-42 left-4 bg-black p-2  text-2xl">Nonveg</h1>
+            <Rescard {...props}/>
+            </div>
+        )
+    }
+
+}
 
 export default Rescard;

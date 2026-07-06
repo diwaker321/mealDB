@@ -9,6 +9,7 @@ import MealDetail from './components/MealDetail.jsx'
 // import Contact from './components/Contact.jsx'
 import ShimmerUi from './components/ShimmerUi.jsx'
 import Cart from './components/Cart.jsx'
+import Parent from './components/Parent.jsx'
 
 
 const Contact = lazy(()=>import("./components/Contact.jsx"))
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path:"/cart",
         element:<Cart/>
+      },
+      {
+        path:"/parent",
+        element:<Parent/>
       }
     ]
   }

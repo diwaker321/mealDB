@@ -13,7 +13,9 @@ footer
  ### build custom hooks
  ### split your code 
 
+ ### lifting the state up () 
+ ### props drilling
+ ### useContext()
  ### higher order components
  ### controlled and uncontrolled component
- ### lifting the state up () 
  ### developer tools extension

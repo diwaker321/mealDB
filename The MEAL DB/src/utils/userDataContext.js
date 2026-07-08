@@ -6,7 +6,7 @@ import { createContext } from "react";
 // })
 
 const userInfoContext = createContext({
-    firstname:""
+    firstname:"username"
 })
 
 

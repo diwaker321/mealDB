@@ -15,7 +15,8 @@ footer
 
  ### lifting the state up () 
  ### props drilling
- ### useContext()
- ### higher order components
  ### controlled and uncontrolled component
  ### developer tools extension
+ ### useContext()
+ ### higher order components
+ ### redux-toolkt (last topic of react)
